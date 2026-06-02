@@ -1,7 +1,7 @@
 from qiskit import QuantumCircuit, QuantumRegister
 from typing import List
 
-from utils import int_to_little_endian_bits, apply_x_for_zero_controls
+from .utils import int_to_little_endian_bits, apply_x_for_zero_controls
 
 
 def apply_controlled_x_on_basis_state(
@@ -33,7 +33,8 @@ def apply_controlled_x_on_basis_state(
 
     apply_x_for_zero_controls(circuit, controls, pattern)
 
-
+# NOTE: We are reading from the classical data to construct the circuit. We do not have enough processing power to
+# use QROM. So we are using classical data loading for this project and this demo
 def apply_qrom_lookup(
     circuit: QuantumCircuit,
     index_register: QuantumRegister,

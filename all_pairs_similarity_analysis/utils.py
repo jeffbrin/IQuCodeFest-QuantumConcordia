@@ -27,3 +27,4 @@ def apply_x_for_zero_controls(
     for qubit, bit in zip(controls, bit_pattern):
         if bit == 0:
             circuit.x(qubit)
+

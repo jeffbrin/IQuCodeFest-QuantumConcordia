@@ -1,4 +1,12 @@
 from typing import List, Tuple
+import matplotlib.pyplot as plt
+from PIL import Image, ImageDraw
+
+def draw_image(img):
+    if isinstance(img, str):
+        img = Image.open(img).convert("RGB")
+    return ImageDraw.Draw(img)
+
 def highlight_matching_chunks(
     image_path: str,
     positions: List[Tuple[int, int]],
@@ -14,8 +22,6 @@ def highlight_matching_chunks(
     This version is better for tiny demo images, because it scales the image up
     before drawing boxes. For a 4x4 image, scale=40 makes it 160x160.
     """
-    import matplotlib.pyplot as plt
-    from PIL import Image, ImageDraw
 
     i, j = pair
 
@@ -30,7 +36,7 @@ def highlight_matching_chunks(
     width, height = img.size
     scaled = img.resize((width * scale, height * scale), resample=Image.Resampling.NEAREST)
 
-    draw = ImageDraw.Draw(scaled)
+    draw = draw_image(scaled)
 
     boxes = [
         (i, positions[i], "red"),
