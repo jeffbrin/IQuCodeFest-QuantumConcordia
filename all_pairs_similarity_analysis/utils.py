@@ -1,3 +1,6 @@
+from typing import List
+from qiskit import QuantumCircuit
+
 def int_to_little_endian_bits(value: int, width: int) -> List[int]:
     """
     Convert an integer to a list of little-endian bits.

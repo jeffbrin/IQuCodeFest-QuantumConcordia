@@ -332,13 +332,11 @@ def apply_duplicate_pair_oracle(
     # -----------------------------------------------------------------------
     pair_controls = list(i_reg) + list(j_reg)
 
-    # TODO: What??
     for idx in range(num_chunks):
         idx_bits_le = int_to_little_endian_bits(idx, idx_bits)
         basis_bits = idx_bits_le + idx_bits_le
         apply_phase_flip_on_basis_state(circuit, pair_controls, basis_bits)
 
-    # TODO: Why??
     # -----------------------------------------------------------------------
     # 5. Uncompute diff.
     #
@@ -348,7 +346,6 @@ def apply_duplicate_pair_oracle(
         circuit.cx(chunk_j_reg[bit_pos], diff_reg[bit_pos])
         circuit.cx(chunk_i_reg[bit_pos], diff_reg[bit_pos])
 
-    # TODO: Why??
     # -----------------------------------------------------------------------
     # 6. Unload chunk_j and chunk_i.
     #
